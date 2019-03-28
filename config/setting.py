@@ -31,5 +31,5 @@ test_dir= os.path.join(base_dir,'test_case')
 # 邮箱设置
 user='179956000@qq.com'
 pd='dydascollsuhbihf'
-receive= ['179956000@qq.com', '179956000@qq.com']
+receive= ['179956000@qq.com', '179956000@qq.com',"573783387@qq.com"]
 
