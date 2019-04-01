@@ -1,10 +1,8 @@
 import time
 import unittest
-import logging
 from util.send_email import send_mail
 from config.setting import report_path, test_dir
-from test_case.test_login import TestDemo
-from util.HTMLTestRunner import HTMLTestRunner
+from base.HTMLTestRunner import HTMLTestRunner
 
 # 加载单个用例
 # suite = unittest.TestLoader().loadTestsFromTestCase(TestDemo)
