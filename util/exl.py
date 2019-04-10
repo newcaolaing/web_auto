@@ -26,6 +26,18 @@ class Excel_Opertion(object):
             return result
         return None
 
+    def api_get_data(self):
+        result = []
+        rows = self.get_lines()
+        head=self.table.row_values(0)
+        if rows !=None:
+            for i in range(1,rows):
+                row = self.table.row_values(i)
+                # 将用例名称一一对应
+                result.append(dict.fromkeys((row[0],),dict(zip(head[1:],row[1:]))))
+            return result
+        return None
+
     # 获取excel行数
     def get_lines(self):
         rows = self.table.nrows  # 获取行数
