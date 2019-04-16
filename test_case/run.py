@@ -1,10 +1,8 @@
 import time
 import unittest
-import logging
 from util.send_email import send_mail
 from config.setting import report_path, test_dir
-from test_case.test_login import TestDemo
-from util.HTMLTestRunner_cn import HTMLTestRunner
+from base.HTMLTestRunner_cn import HTMLTestRunner
 
 # 加载单个用例
 # suite = unittest.TestLoader().loadTestsFromTestCase(TestDemo)
@@ -20,22 +18,22 @@ report_name = report_path + '/' + now + ' test_report.html'
 #     runner = BSTestRunner(stream=f, title="Kyb Test Report", description="kyb Andriod app Test Report")
 #     logging.info("start run testcase...")
 #     runner.run(discover)
+
+def create_report():
+    '''
+    运行所有*_test.py文件中的test,生成报告
+    :param is_new: n 覆盖旧的报告，y 根据时间格式生产新报告
+    :return: 根据规则生成测试报告文件名，相对路径
+    '''
+    with open(report_name, 'wb') as f:
+        runner = HTMLTestRunner(stream=f, title="This is the 大帅哥的 report", description="关键字驱动+excel")
+        runner.run(discover)
+    send_mail()
+
+
 if __name__ == '__main__':
     # with open(report_name, 'wb') as f:
     #     runner = HTMLTestRunner(stream=f, title="This is the 大帅哥的 report",
     #                             description="关键字驱动+excel", verbosity=2)
     #     runner.run(discover)
-
-
-    def create_report():
-        '''
-        运行所有*_test.py文件中的test,生成报告
-        :param is_new: n 覆盖旧的报告，y 根据时间格式生产新报告
-        :return: 根据规则生成测试报告文件名，相对路径
-        '''
-        with open(report_name, 'wb') as f:
-            runner = HTMLTestRunner(stream=f, title="This is the 大帅哥的 report", description="关键字驱动+excel")
-            runner.run(discover)
-        send_mail()
-
     create_report()
