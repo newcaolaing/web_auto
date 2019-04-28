@@ -8,6 +8,7 @@ from util.exl import Excel_Opertion
 
 A = Excel_Opertion()
 a = A.get_data()
+
 @paramunittest.parametrized(*a)
 
 class TestDemo(StartEnd):
@@ -24,3 +25,6 @@ class TestDemo(StartEnd):
         logging.info("开始执行用例：--------------"+self.test_name)
         selector.run(self.step)
         assert_md.run()
+
+
+
