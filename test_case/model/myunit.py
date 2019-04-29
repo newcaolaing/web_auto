@@ -1,8 +1,12 @@
 import unittest
+
+import time
+from BeautifulReport import BeautifulReport
+
 from base.web_driver import browser
 from config.setting import logging
 from util.send_email import inser_img,get_time
-
+now = time.strftime("%Y-%m-%d %H_%M_%S")
 class StartEnd(unittest.TestCase):
     name=''
 
@@ -25,7 +29,7 @@ class StartEnd(unittest.TestCase):
                 case_name = self._testname  # case名，即定义好的方法名
                 print(case_name)
                 report_error_name =get_time()+ case_name + '.png'
-                logging.error("report_error:", report_error_name)
+                logging.info("report_error:", report_error_name)
                 inser_img(self.driver,report_error_name)
 
 

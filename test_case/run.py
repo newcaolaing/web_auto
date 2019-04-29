@@ -1,5 +1,7 @@
 import time
 import unittest
+
+from BeautifulReport import BeautifulReport
 from util.send_email import send_mail
 from config.setting import report_path, test_dir
 from base.HTMLTestRunner_cn import HTMLTestRunner
@@ -31,9 +33,13 @@ def create_report():
     send_mail()
 
 
+def create_beautiful():
+    result = BeautifulReport(discover)
+    result.report(filename=now+'测试报告',report_dir=report_path,description='测试deafult报告')
+
 if __name__ == '__main__':
     # with open(report_name, 'wb') as f:
     #     runner = HTMLTestRunner(stream=f, title="This is the 大帅哥的 report",
     #                             description="关键字驱动+excel", verbosity=2)
     #     runner.run(discover)
-    create_report()
+    create_beautiful()

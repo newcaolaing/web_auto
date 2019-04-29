@@ -1,3 +1,6 @@
+import time
+from BeautifulReport import BeautifulReport
+
 from base.find_element import analytic_selector
 from test_case.model.myunit import StartEnd
 from config.setting import logging, report_path
@@ -6,10 +9,11 @@ import paramunittest
 from util.assert_method import assert_method
 from util.exl import Excel_Opertion
 
+now = time.strftime("%Y-%m-%d %H_%M_%S")
 A = Excel_Opertion()
 a = A.get_data()
-@paramunittest.parametrized(*a)
 
+@paramunittest.parametrized(*a)
 class TestDemo(StartEnd):
     def setParameters(self, TEST_ID,TEST_NAME,MODULE, STEP,RESULT):
         '''这里注意了，user, psw, result三个参数和前面定义的字典一一对应'''
@@ -17,6 +21,7 @@ class TestDemo(StartEnd):
         self.step = STEP
         self.result = RESULT
 
+    @BeautifulReport.add_test_img(now)
     def testcase(self):
         self._testname = self.test_name
         selector = analytic_selector(self.driver)
