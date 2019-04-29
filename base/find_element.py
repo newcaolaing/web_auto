@@ -1,57 +1,39 @@
-from base.wait import wait
-from util.read_ini import Read_Ini
+from base.key_next import key_next
 import logging
 import re
 from selenium import webdriver
 
-class analytic_selector(wait):
+
+class analytic_selector(key_next):
     """获取元素所在位置"""
 
     def __init__(self, driver):
         super().__init__(driver)
+        self.AC = {
+            "打开":self.open,
+            "点击":self.click,
+            "输入":self.input,
+            "退出浏览器":self.quit,
+            "刷新":self.refresh,
+        }
 
     # 获取测试步骤将其分解去除杂数据
-    def one_next(self,a):
-        return [re.sub("\d\.",'',x) for x in a.split("\n")]
+    def one_next(self, a):
+        return [re.sub("\d\.", '', x) for x in a.split("\n")]
 
-    def get_element(self, key):
-        actions = key.split("||")
+    def step(self,key):
+        self.actions = key.split("||")
+        self.action_head = self.actions[0]
+        self.AC[self.action_head]()
 
-        if len(actions) > 1:
-            action_head = actions[0]
-            if action_head == "打开":
-                logging.info("正在打开："+actions[1])
-                self.driver.get(actions[1])
 
-            elif action_head == "点击":
-                selector, selector_location = self.selector_path(actions[1])
-                logging.info("正在点击"+selector_location)
-                self.action_element(selector,selector_location).click()
-
-            elif action_head == "输入":
-                selector, selector_location = self.selector_path(actions[1])
-                logging.info("定位元素："+selector_location+"--正在输入"+actions[2])
-                self.action_element(selector, selector_location).send_keys(actions[2])
-            elif action_head == "等待":
-                selector, selector_location = self.selector_path(actions[1])
-                self.wait_text(selector_location,actions[2])
-
-        elif len(actions) == 1:
-            if actions[0] == "退出浏览器":
-                logging.info("退出浏览器")
-                self.driver.quit()
-            elif actions[0] == "刷新浏览器":
-                self.driver.refresh()
 
     def selector_path(self, a):
         path = re.match("(.*){(.*)}", a)
         return path.groups()
 
-
-    def is_path(self,path):
-        selector = ["id","name","className","xpath","css"]
-        print(path)
-        print(self.selector_path(path))
+    def is_path(self, path):
+        selector = ["id", "name", "className", "xpath", "css"]
         if self.selector_path(path)[0] in selector:
             return True
         else:
@@ -73,23 +55,19 @@ class analytic_selector(wait):
             logging.error("find_element错误信息：", e)
             return None
 
-    def get_text(self,path):
+    def get_text(self, path):
         selector, selector_location = self.selector_path(path)
-        return  self.action_element(selector, selector_location).text
+        return self.action_element(selector, selector_location).text
 
     def get_url(self):
-        return  self.driver.current_url
+        return self.driver.current_url
 
-
-
-    def run(self,action):
+    def run(self, action):
         for next in self.one_next(action):
-            self.get_element(next)
-
-
-
+            self.step(next)
 
 
 if __name__ == '__main__':
-    a=analytic_selector(1)
-    a.is_path('xpath{//*[@id="bs-example-navbar-collapse-1"]//a}')
+    driver = webdriver.Chrome()
+    a=analytic_selector(driver)
+    a.run("1.打开||http://old.biaodaa.com/")
