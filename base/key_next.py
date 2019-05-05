@@ -1,3 +1,5 @@
+import re
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -39,3 +41,8 @@ class key_next(object):
     def refresh(self):
         logging.info("刷新浏览器")
         self.driver.refresh()
+
+    def mysleep(self):
+        sj = re.search('\d',self.actions[1]).group(0)
+        logging.info(re.sub('\|\|','',self.key))
+        time.sleep(int(sj))

@@ -15,6 +15,7 @@ class analytic_selector(key_next):
             "输入":self.input,
             "退出浏览器":self.quit,
             "刷新":self.refresh,
+            "正常等待":self.mysleep,
         }
 
     # 获取测试步骤将其分解去除杂数据
@@ -22,6 +23,7 @@ class analytic_selector(key_next):
         return [re.sub("\d\.", '', x) for x in a.split("\n")]
 
     def step(self,key):
+        self.key = key
         self.actions = key.split("||")
         self.action_head = self.actions[0]
         self.AC[self.action_head]()
