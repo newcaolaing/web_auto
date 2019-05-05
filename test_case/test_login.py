@@ -28,4 +28,4 @@ class TestDemo(StartEnd):
         assert_md = assert_method(selector,self.result)
         logging.info("开始执行用例：--------------"+self.test_name)
         selector.run(self.step)
-        assert_md.run()
+        self.assertTrue( assert_md.run())
