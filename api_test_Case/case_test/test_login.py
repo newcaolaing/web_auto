@@ -1,8 +1,5 @@
-
 import unittest
-
 import requests
-
 from config.setting import logging
 from util.send_email import get_time
 
@@ -18,13 +15,9 @@ class StartEnd(unittest.TestCase):
 
 
     def tearDown(self):
-
         for method_name, error in self._outcome.errors:  # case如果执行失败，错误会保存到_outcome.errors 中
             if error:
-                case_name = self._testname  # case名，即定义好的方法名
-                print(case_name)
-                report_error_name =get_time()+ case_name
-                logging.error("report_error:", report_error_name)
+                logging.error(error)
 
 
     @classmethod
@@ -37,6 +30,7 @@ class StartEnd(unittest.TestCase):
 
 
     def test_login(self):
+        """ 登录 """
         url =  "http://api.biaodaa.com/authorize/memberLogin"
         data = '{"phoneNo":"15576361737","loginPwd":"7c222fb2927d828af22f592134e8932480637c0d","channel":"1003","clientVersion":"3.0"}'
 
