@@ -27,7 +27,7 @@ excel_path= os.path.join(base_dir,'test_case',"case_excel","test_cese.xlsx")
 
 # 测试用例代码目录
 test_dir= os.path.join(base_dir,'test_case')
-
+api_test_dir = os.path.join(base_dir,'api_test_Case',"case_test")
 # 邮箱设置
 user='179956000@qq.com'
 pd='dydascollsuhbihf'
