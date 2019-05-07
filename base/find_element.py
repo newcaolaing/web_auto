@@ -17,6 +17,7 @@ class analytic_selector(key_next):
             "刷新":self.refresh,
             "正常等待":self.mysleep,
             "等待元素":self.wait,
+            "隐性等待":self.imsleep,
         }
 
     # 获取测试步骤将其分解去除杂数据

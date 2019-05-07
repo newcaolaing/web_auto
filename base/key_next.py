@@ -46,3 +46,8 @@ class key_next(object):
         sj = re.search('\d',self.actions[1]).group(0)
         logging.info(re.sub('\|\|','',self.key))
         time.sleep(int(sj))
+
+    def imsleep(self):
+        sj = re.search('\d',self.actions[1]).group(0)
+        logging.info(re.sub('\|\|','',self.key))
+        self.driver.implicitly_wait(int(sj))
