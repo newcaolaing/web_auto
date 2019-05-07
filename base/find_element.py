@@ -16,6 +16,7 @@ class analytic_selector(key_next):
             "退出浏览器":self.quit,
             "刷新":self.refresh,
             "正常等待":self.mysleep,
+            "等待元素":self.wait,
         }
 
     # 获取测试步骤将其分解去除杂数据
