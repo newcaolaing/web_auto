@@ -9,7 +9,7 @@ from base.HTMLTestRunner_cn import HTMLTestRunner
 # 加载单个用例
 # suite = unittest.TestLoader().loadTestsFromTestCase(TestDemo)
 #加载多个测试用例
-discover = unittest.defaultTestLoader.discover(api_test_dir, pattern='run_test.py')
+discover = unittest.defaultTestLoader.discover(api_test_dir, pattern='test_login.py')
 
 #定义报告的文件格式
 now = time.strftime("%Y-%m-%d %H_%M_%S")

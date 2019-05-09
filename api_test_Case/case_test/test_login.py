@@ -34,8 +34,9 @@ class StartEnd(unittest.TestCase):
         url =  "http://api.biaodaa.com/authorize/memberLogin"
         data = '{"phoneNo":"15576361737","loginPwd":"7c222fb2927d828af22f592134e8932480637c0d","channel":"1003","clientVersion":"3.0"}'
 
-        response = requests.post(url,data=data,headers=self.headers)
-        logging.info(response.json())
+        response = requests.post(url,data=data,headers=self.headers).json()
+        logging.info(response)
+        self.assertEqual(response["msg"],"用户登录成功！")
 
 
 
