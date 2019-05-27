@@ -22,10 +22,10 @@ def browser():
         if b == "False":
             options = cOptions()
             options.add_argument('-headless')  # 无头参数
-            driver = webdriver.Chrome(chrome_options=options)
+            driver = webdriver.Chrome(chrome_options=options,executable_path=r'chromedriver.exe')
             logging.info("启动无头谷歌")
         else:
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
             logging.info("启动谷歌")
 
     return driver
