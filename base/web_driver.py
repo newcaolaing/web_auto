@@ -2,8 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options  as fOptions
 from selenium.webdriver.chrome.options import Options   as cOptions
 from util.read_ini import Read_Ini
-from config.setting import driver_ini_dir,logging
-
+from config.setting import driver_ini_dir, logging, driver_path
 
 
 def browser():
@@ -22,10 +21,10 @@ def browser():
         if b == "False":
             options = cOptions()
             options.add_argument('-headless')  # 无头参数
-            driver = webdriver.Chrome(chrome_options=options,executable_path=r'chromedriver.exe')
+            driver = webdriver.Chrome(chrome_options=options,executable_path=driver_path)
             logging.info("启动无头谷歌")
         else:
-            driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
+            driver = webdriver.Chrome(executable_path=driver_path)
             logging.info("启动谷歌")
 
     return driver
