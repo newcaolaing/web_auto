@@ -15,7 +15,7 @@ a = A.get_data()
 
 @paramunittest.parametrized(*a)
 class TestDemo(StartEnd):
-    def setParameters(self, TEST_ID,TEST_NAME,MODULE, STEP,RESULT):
+    def setParameters(self, TEST_ID,TEST_NAME,MODULE, STEP,RESULT,is_sure):
         '''这里注意了，user, psw, result三个参数和前面定义的字典一一对应'''
         self.test_name = TEST_NAME
         self.step = STEP

@@ -22,6 +22,8 @@ class Excel_Opertion(object):
         if rows !=None:
             for i in range(1,rows):
                 row = self.table.row_values(i)
+                # 过滤不执行的用例
+                if row[-1] == 'F':continue
                 result.append(dict(zip(head,row)))
             return result
         return None
