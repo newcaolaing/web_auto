@@ -2,12 +2,9 @@ import os
 import logging.config
 
 
-
-
 log_file_path =os.path.join(os.path.dirname(__file__).split("web_auto")[0]+"web_auto",'config','log.conf')
 logging.config.fileConfig(log_file_path)
 logging = logging.getLogger()
-
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # 项目首路径
 
