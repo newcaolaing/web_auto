@@ -7,6 +7,7 @@ class  assert_method():
         self.result = result
 
 
+
     def run(self):
         if "||" in self.result:
             result_assert=self.result.split("||")
