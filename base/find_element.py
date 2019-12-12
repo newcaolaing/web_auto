@@ -9,6 +9,8 @@ class analytic_selector(key_next):
 
     def __init__(self, driver):
         super().__init__(driver)
+        # self.next_key = key_next(driver)
+
         self.AC = {
             "打开":self.open,
             "点击":self.click,
@@ -19,6 +21,17 @@ class analytic_selector(key_next):
             "等待元素":self.wait,
             "隐性等待":self.imsleep,
         }
+        #
+        # self.AC = {
+        #     "打开":"open",
+        #     "点击":"click",
+        #     "输入":"input",
+        #     "退出浏览器":"quit",
+        #     "刷新":"refresh",
+        #     "正常等待":"mysleep",
+        #     "等待元素":"wait",
+        #     "隐性等待":"imsleep",
+        # }
 
     # 获取测试步骤将其分解去除杂数据
     def one_next(self, a):
@@ -28,6 +41,7 @@ class analytic_selector(key_next):
         self.key = key
         self.actions = key.split("||")
         self.action_head = self.actions[0]
+        # getattr(key_next, self.AC[self.action_head])()
         self.AC[self.action_head]()
 
 
