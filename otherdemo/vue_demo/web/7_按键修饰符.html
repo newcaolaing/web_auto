@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    vue:<input type="text" @keydown.enter="fun1">
+    vue:<input type="text" @keydown.delete="fun2">
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        methods:{
+            fun1:function () {
+                alert("按下了回车");
+            },
+            fun2:function () {
+                alert("按下了删除")
+            }
+        }
+    })
+</script>
+</html>

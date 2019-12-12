@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(value,index) in arr">{{index}}:{{value}}</li>
+        <li v-for="(key,value) in zidian">{{key}}----{{value}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4,5,6],
+            zidian:{
+                id:1,
+                name:"笔记本",
+                price:4000
+            }
+        }
+    })
+</script>
+</html>

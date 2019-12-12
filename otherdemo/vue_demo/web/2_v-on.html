@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<div   id="app">
+    {{message}}
+    <!--v-on事件-->
+    <button v-on:click="fun1('vue v-on')">v-on</button>
+    
+    <!--传统onkeydown-->
+    传统js：<input type="text" onkeydown="showkeycode()">
+    vue   ：<input type="text" v-on:keydown="fun($event)">
+</div>
+<script>
+    // 传统js键盘按下事件
+    function showkeycode() {
+        var keycode  = event.keyCode;
+        if (keycode <48 || keycode >57){
+            event.preventDefault();
+        }
+    }
+</script>
+</body>
+<script>
+  new Vue({
+      el:"#app",
+      data:{
+          message:"hello"
+      },
+      methods:{
+          fun1:function (msg) {
+              alert("hello")
+              this.message = msg
+          },
+          // $event 是vue事件对象
+          fun:function () {
+            var keycode  = event.keyCode;
+            if (keycode <48 || keycode >57){
+                event.preventDefault();
+        }
+          }
+      }
+  })
+</script>
+</html>

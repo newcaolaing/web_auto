@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+      <li v-for="(k,v) in userList">{{k}}:{{v}}</li>
+  </ul>
+    <button @click="f">ckich</button>
+</div>
+<script type = "text/javascript">
+var vue = new Vue({
+    el: "#app",
+    data: {
+        user: {id:"",username:"aaa",password:"",age:"",sex:"",email:""},
+        userList: []
+    },
+    methods: {
+        f: function () {
+            var _this = this;
+            axios.get("http://127.0.0.1:8888/getagax").then(function (response) {
+                _this.userList = response.data;
+                console.log(_this.userList);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }
+});
+</script>
+</body>
+</html>

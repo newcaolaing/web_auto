@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <form action="" method="post">
+        用户名：<input type="text" name="use" :value="ad"><br>
+        密码：<input type="text" name="pd" v-model:value="use.pd">
+    </form>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            use:{
+                name:"test",
+                pd:"123456"
+            },
+            ad:"123"
+        }
+    })
+</script>
+</html>
