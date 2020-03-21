@@ -1,0 +1,11 @@
+{
+  "posts": [{
+
+  }],
+    "comments": [{
+    "id": 1,"boby": "some"
+  }],
+      "profile": [{
+    "name":  "typi"
+  }]
+}

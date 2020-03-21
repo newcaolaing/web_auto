@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html{
+			height: 100%;
+		}
+		body {
+			height: calc(100% - 20px);
+			padding: 10px;
+			background-color: #f1f1f1;
+		}
+		.tab {
+			background-color: #fff;
+			height: 40px;
+		}
+		.tab li {
+			float: left;
+			margin-top: 6px;
+			margin-left: 10px;
+			height: 28px;
+			box-sizing: border-box;
+			line-height: 28px;
+			padding: 0 10px;
+			border: 1px solid #D8D8D8;
+			border-radius: 3px;
+			list-style: none;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		
+		.tab li.active {
+			border:none;
+			background-color: #07C2CA;
+			color: #fff;
+		}
+		
+		#frame {
+			background-color: #fff;
+			border:none;
+			margin-top: 10px;
+			width: 100%;
+			height: calc(100% - 60px);
+		}
+	</style>
+	<body>
+		<ul class="tab">
+			<li class="active">人员、床位</li>
+			<li>本月收入与支出</li>
+			<li>本月医疗服务与质量</li>
+			<li>代报单位填报</li>
+			<li>月末基本公共卫生服务量</li>
+			<li>信息化项目</li>
+			<li>公立医院填报项目</li>
+		</ul>
+		<iframe id="frame" src="http://172.28.231.227:8080/wt/?md=1&yy=444907391&yf=201901" frame=0></iframe>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			var links = [
+				'http://172.28.231.227:8080/wt/?md=1&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=2&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=3&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=4&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=5&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=6&yy=444907391&yf=201901',
+				'http://172.28.231.227:8080/wt/?md=7,8&yy=444907391&yf=201901',
+			]
+			$$('.tab li').click(function(){
+				var index = $$(this).index()
+				$$(this).siblings().removeClass('active')
+				$$(this).addClass('active')
+				$$('#frame').attr('src', links[index])
+			})
+		</script>
+	</body>
+</html>

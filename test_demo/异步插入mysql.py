@@ -1,3 +1,4 @@
+import random
 from time import strftime, localtime
 
 import pymysql
@@ -14,14 +15,14 @@ db_settings = {
     'use_unicode': True
 }
 # sql语句模版
-insert_sql = 'INSERT INTO `bf`.`test` (`id`) VALUES (%s); '
+insert_sql = 'INSERT INTO `bf`.`test` (`name` ) VALUES (%s); '
 
 
 def go_insert(cursor, sql):
     # 对数据库进行插入操作，并不需要commit，twisted会自动帮我commit
     try:
-        for i in range(100000):
-            data = str(i)
+        for i in range(10000):
+            data = random.choice("waedfs")
             cursor.execute(sql,data)
     except Exception as e:
         print(e)
@@ -67,7 +68,7 @@ def zc():
     print(strftime("%Y-%m-%d %H:%M:%S", localtime()))
 
 if __name__ == '__main__':
-    bf()
+    zc()
 
 
 

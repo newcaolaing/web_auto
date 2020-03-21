@@ -32,7 +32,6 @@ class ThreadInsert(object):
             use_unicode=True)
         # dsn = cx_Oracle.makedsn('127.0.0.1', 1521, sid='orcl')
         # pool = PooledDB(cx_Oracle,mincached=20,blocking=True,user='c##z',password='test',dsn=dsn)
-
         return pool
 
     def getData(self):

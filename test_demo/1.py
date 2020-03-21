@@ -1,5 +1,4 @@
 import unittest
-
 import time
 
 from base.find_element import analytic_selector

@@ -1,5 +1,8 @@
 import xlrd
+import xlwt
+import openpyxl
 from config.setting import excel_path
+from config.setting import api_excel_path
 
 class Excel_Opertion(object):
     """excel表数据相关操作"""
@@ -40,6 +43,12 @@ class Excel_Opertion(object):
             return result
         return None
 
+    def api_update_data(self,row,column,eq):
+        workbook = openpyxl.load_workbook(api_excel_path)
+        worksheet = workbook.worksheets[0]
+        worksheet.cell(row, column, eq)
+        workbook.save(api_excel_path)
+
     # 获取excel行数
     def get_lines(self):
         rows = self.table.nrows  # 获取行数
@@ -50,4 +59,4 @@ class Excel_Opertion(object):
 
 if __name__ == '__main__':
     a=Excel_Opertion()
-    print(a.get_data())
+    a.api_update_data(1,2)

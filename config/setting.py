@@ -21,6 +21,7 @@ report_path = os.path.join(base_dir,'report',"reports")
 
 # 用例excel存放目录
 excel_path= os.path.join(base_dir,'test_case',"case_excel","test_cese.xlsx")
+api_excel_path= os.path.join(base_dir,'api_test_Case',"case_excel","test_cese.xlsx")
 
 # driver存放目录
 driver_path = os.path.join(base_dir,'base',"chromedriver.exe")

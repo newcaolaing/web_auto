@@ -1,0 +1,103 @@
+$def with (name)
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+<html xmlns=”http://www.w3.org/1999/xhtml”>
+<head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″ />
+    <title>Template</title>
+    <style type="text/css">
+        /*td{*/
+            /*!*width: 90px;*!*/
+        /*}*/
+</style>
+
+</head>
+<body>
+
+<form methond  = "get" action="/wt/">
+
+<!-- 建议将name = "" 写到select中，因为select标签中的内容是一个整体,可以放在select中统一设置-->
+<!-- option标签中间的内容是默认的值，也可以在option标签中添加 name = "" ,将会按照指定的值发送数据。 -->
+    <select name="md" id = "md">
+        <option value ="1">月末人员及床位数</option>
+        <option value ="2">本月收入与支出（千元）</option>
+        <option value ="3">本月医疗卫生服务质量</option>
+        <option value ="4">卫生计生委指定机构代报以下项目(</option>
+        <option value ="5">月末基本公共卫生服务量</option>
+        <option value ="6">信息化项目</option>
+        <option value ="7,8">公立医院填报项目</option>
+    </select>
+
+<select name="yy" id = "yy" >
+        <option value ="444907391">长沙市第三医院</option>
+        <option value ="444907404">长沙市第四医院</option>
+        <option value ="444907375">长沙市第一医院</option>
+        <option value ="444907455">长沙市妇幼保健院</option>
+        <option value ="444907447">长沙市口腔医院</option>
+        <option value ="444984442">长沙市望城区人民医院</option>
+        <option value ="444907439">长沙市中心医院</option>
+        <option value ="444907412">长沙市中医院（市八医院）</option>
+        <option value ="444947676">长沙县第二人民医院</option>
+        <option value ="444947668">长沙县第一人民医院</option>
+        <option value ="444947705">长沙县妇幼保健院</option>
+        <option value ="444947844">长沙县星沙医院</option>
+        <option value ="444947684">长沙县中医院</option>
+        <option value ="44511780X">宁乡市人民医院</option>
+        <option value ="445117818">宁乡市中医医院</option>
+        <option value ="445117842">宁乡县妇幼保健院</option>
+        <option value ="444984522">望城区妇幼保健计划生育服务中心</option>
+        <option value ="445011773">浏阳市妇幼保健院</option>
+        <option value ="445011749">浏阳市人民医院</option>
+        <option value ="445011757">浏阳市中医医院</option>
+</select>
+    <input type="text" name="yf" value="$name[-1][1]">
+    <!--<select name="yf"  id = "yf">-->
+<!--<option value ="201901">一月</option>-->
+<!--<option value ="201902">二月</option>-->
+<!--<option value ="201903">三月</option>-->
+<!--<option value ="201904">四月</option>-->
+<!--<option value ="201905">五月</option>-->
+<!--<option value ="201906">六月</option>-->
+<!--<option value ="201907">七月</option>-->
+<!--<option value ="201908">八月</option>-->
+<!--<option value ="201909">九月</option>-->
+<!--<option value ="201910">十月</option>-->
+<!--<option value ="201911">十一月</option>-->
+<!--<option value ="201912">十月</option>-->
+<!--</select>-->
+<input type="submit" value="提交">
+
+<table border="1" cellspacing="0" cellpadding="0" >
+        <tr>
+    <td>月份</td>
+    <td>医院</td>
+    <td>指标名称</td>
+    <td>卫统数据</td>
+    <td>系统数据</td>
+  </tr>
+$for x in name[0]:
+    <tr>
+    <td>&nbsp;$x[0]&nbsp;</td>
+    <td>&nbsp;$x[1]&nbsp;</td>
+    <td>&nbsp;$x[3]&nbsp;</td>
+    <td>&nbsp;$x[4]&nbsp;</td>
+    <td>&nbsp;$x[5]&nbsp;</td>
+  </tr>
+
+</table>
+</body>
+<script>
+
+    var dom=document.getElementsByTagName("option");
+    for (var i=0; i<dom.length; i++) {
+        if("$name[1][0]" === dom[i].getAttribute("value")){
+            dom[i].selected =true;
+        }
+        if("$name[1][1]" === dom[i].getAttribute("value")){
+            dom[i].selected =true;
+        }
+        if("$name[1][2]" === dom[i].getAttribute("value")){
+            dom[i].selected =true;
+        }
+    }
+</script>
+</html>

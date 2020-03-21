@@ -11,6 +11,7 @@ from base.HTMLTestRunner_cn import HTMLTestRunner
 #加载多个测试用例
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
 
+
 #定义报告的文件格式
 now = time.strftime("%Y-%m-%d %H_%M_%S")
 report_name = report_path + '/' + now + ' test_report.html'

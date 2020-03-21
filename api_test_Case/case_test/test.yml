@@ -1,0 +1,12 @@
+- config:
+    name: testcase description
+    base_url: http://www.httpbin.org
+
+- test:
+    name: get
+    request:
+      url: /get
+      method: GET
+    validate:
+      - eq: [status_code,200]
+      - eq: [content.url,http://www.httpbin.org/get]

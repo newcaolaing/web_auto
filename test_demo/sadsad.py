@@ -48,12 +48,12 @@ for sec in sections:
 
 
 
-with open("1.py","a+",encoding="utf8") as f:
+with open("1_判断类包含方法及抽象类的创建.py","a+",encoding="utf8") as f:
     for x in list:
         f.write(x+"\n")
 
 
-# os.system('python 1.py')
+# os.system('python 1_判断类包含方法及抽象类的创建.py')
 
 
 
