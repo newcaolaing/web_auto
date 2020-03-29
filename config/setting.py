@@ -26,6 +26,9 @@ api_excel_path= os.path.join(base_dir,'api_test_Case',"case_excel","test_cese.xl
 # driver存放目录
 driver_path = os.path.join(base_dir,'base',"chromedriver.exe")
 
+#app存放路径
+app_path = os.path.join(base_dir,'base')
+
 # 测试用例代码目录
 test_dir= os.path.join(base_dir,'test_case')
 api_test_dir = os.path.join(base_dir,'api_test_Case',"case_test")
